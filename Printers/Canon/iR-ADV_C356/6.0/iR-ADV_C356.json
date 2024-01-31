@@ -1,0 +1,261 @@
+{
+    "zabbix_export": {
+        "version": "6.0",
+        "date": "2024-01-03T10:32:06Z",
+        "groups": [
+            {
+                "uuid": "58afa722676b4fba86702054223316d9",
+                "name": "Templates/Printers"
+            }
+        ],
+        "templates": [
+            {
+                "uuid": "5bb7aaf4f3a04334bd645ec16ed9df2f",
+                "template": "iR-ADV_C356",
+                "name": "Canon iR-ADV C356 by SNMP",
+                "groups": [
+                    {
+                        "name": "Templates/Printers"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "b55f8a0c903f4a11845fc2a457116d13",
+                        "name": "Print (Total 1)",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.1602.1.11.2.2.1.4.3",
+                        "key": "print",
+                        "delay": "5m"
+                    },
+                    {
+                        "uuid": "2ed0fc303a304d1b9a923e8b899def9a",
+                        "name": "Scan (Total 1)",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.1602.1.11.2.2.1.4.4",
+                        "key": "scan",
+                        "delay": "5m"
+                    },
+                    {
+                        "uuid": "89e422476ca144c1a9f81afac19adabe",
+                        "name": "Black Toner",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.2.1.43.11.1.1.9.1.1",
+                        "key": "toner.black",
+                        "delay": "5m",
+                        "triggers": [
+                            {
+                                "uuid": "d91e2302ff1b4f6ba42737f33bfca59d",
+                                "expression": "last(/iR-ADV_C356/toner.black)<=5",
+                                "name": "Black toner is low",
+                                "priority": "HIGH",
+                                "manual_close": "YES"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "c1537dd290f7416eb0f2fa4e0b4dbba5",
+                        "name": "Cyan Toner",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.2.1.43.11.1.1.9.1.2",
+                        "key": "toner.cyan",
+                        "delay": "5m",
+                        "triggers": [
+                            {
+                                "uuid": "ec12ea03a3ae4b5b83ae541f8506cd2b",
+                                "expression": "last(/iR-ADV_C356/toner.cyan)<=5",
+                                "name": "Cyan toner is low",
+                                "priority": "HIGH",
+                                "manual_close": "YES"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "f74a937ab9b641afa66da23aefc73dd0",
+                        "name": "Magenta Toner",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.2.1.43.11.1.1.9.1.3",
+                        "key": "toner.magenta",
+                        "delay": "5m",
+                        "triggers": [
+                            {
+                                "uuid": "1207e340adef481f9b2e06fa94b5f7cd",
+                                "expression": "last(/iR-ADV_C356/toner.magenta)<=5",
+                                "name": "Magenta toner is low",
+                                "priority": "HIGH",
+                                "manual_close": "YES"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "0fbfe4eb7f444310abc5fea35c0aea74",
+                        "name": "Waste Toner",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.2.1.43.11.1.1.9.1.5",
+                        "key": "toner.waste",
+                        "delay": "5m",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "preprocessing": [
+                            {
+                                "type": "STR_REPLACE",
+                                "parameters": [
+                                    "-2",
+                                    "OK"
+                                ]
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "f47246d7b5144fdb808506ba3706d048",
+                                "expression": "last(/iR-ADV_C356/toner.waste)<>\"OK\"",
+                                "name": "Waste toner issue",
+                                "priority": "HIGH"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "14768b9928114798be848dbe0fb88cd7",
+                        "name": "Yellow Toner",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.2.1.43.11.1.1.9.1.4",
+                        "key": "toner.yellow",
+                        "delay": "5m",
+                        "triggers": [
+                            {
+                                "uuid": "dff3a95609e6463289c28f4cc82534ed",
+                                "expression": "last(/iR-ADV_C356/toner.yellow)<=5",
+                                "name": "Yellow toner is low",
+                                "priority": "HIGH",
+                                "manual_close": "YES"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "6722462f167047de9cd7d31facbbe570",
+                        "name": "Total (Black & White/Small)",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.1602.1.11.2.2.1.4.1",
+                        "key": "total.blackwhite",
+                        "delay": "5m"
+                    },
+                    {
+                        "uuid": "1324f26cb90040099e16fbfe248eb98e",
+                        "name": "Total (Full Color + Single Color/Small)",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.4.1.1602.1.11.2.2.1.4.2",
+                        "key": "total.fullcolor",
+                        "delay": "5m"
+                    },
+                    {
+                        "uuid": "7c999b3194e04b6eaf95a2ebb477cd18",
+                        "name": "Black Drum Unit",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.2.1.43.11.1.1.9.1.6",
+                        "key": "unit.drum.black",
+                        "delay": "5m",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "preprocessing": [
+                            {
+                                "type": "STR_REPLACE",
+                                "parameters": [
+                                    "-2",
+                                    "OK"
+                                ]
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "50d1fecd9f5148b6a03db3e6fbb5cf6f",
+                                "expression": "last(/iR-ADV_C356/unit.drum.black)<>\"OK\"",
+                                "name": "Black drum issue",
+                                "priority": "HIGH"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "34a9ed98561d48918aa0de86e8d1cb5d",
+                        "name": "Cyan Drum Unit",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.2.1.43.11.1.1.9.1.7",
+                        "key": "unit.drum.cyan",
+                        "delay": "5m",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "preprocessing": [
+                            {
+                                "type": "STR_REPLACE",
+                                "parameters": [
+                                    "-2",
+                                    "OK"
+                                ]
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "96e99a6cc0984144ba9bebd6284670c6",
+                                "expression": "last(/iR-ADV_C356/unit.drum.cyan)<>\"OK\"",
+                                "name": "Cyan drum issue",
+                                "priority": "HIGH"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "3a4c0c3f3d434ec58e2e57ddbbec6436",
+                        "name": "Magenta Drum Unit",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.2.1.43.11.1.1.9.1.8",
+                        "key": "unit.drum.magenta",
+                        "delay": "5m",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "preprocessing": [
+                            {
+                                "type": "STR_REPLACE",
+                                "parameters": [
+                                    "-2",
+                                    "OK"
+                                ]
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "d99e415a10054d85a1dc37b97811fe66",
+                                "expression": "last(/iR-ADV_C356/unit.drum.magenta)<>\"OK\"",
+                                "name": "Magenta drum issue",
+                                "priority": "HIGH"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "422af8a0fc3a4ed7b4a81241f15e691c",
+                        "name": "Yellow Drum Unit",
+                        "type": "SNMP_AGENT",
+                        "snmp_oid": "1.3.6.1.2.1.43.11.1.1.9.1.9",
+                        "key": "unit.drum.yellow",
+                        "delay": "5m",
+                        "trends": "0",
+                        "value_type": "CHAR",
+                        "preprocessing": [
+                            {
+                                "type": "STR_REPLACE",
+                                "parameters": [
+                                    "-2",
+                                    "OK"
+                                ]
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "c4a5e58eb15b49b78fec2ed1bcc376da",
+                                "expression": "last(/iR-ADV_C356/unit.drum.yellow)<>\"OK\"",
+                                "name": "Yellow drum issue",
+                                "priority": "HIGH"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

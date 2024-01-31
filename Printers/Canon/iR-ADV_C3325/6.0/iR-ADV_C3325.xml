@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.0</version>
+    <date>2024-01-03T13:38:28Z</date>
+    <groups>
+        <group>
+            <uuid>58afa722676b4fba86702054223316d9</uuid>
+            <name>Templates/Printers</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <uuid>f21c083de0b74967b4fce5b4e426c358</uuid>
+            <template>iR-ADV_C3325</template>
+            <name>Canon iR-ADV C3325 by SNMP</name>
+            <groups>
+                <group>
+                    <name>Templates/Printers</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>db8415c223024a9ba09ec2c832008cb4</uuid>
+                    <name>Print (Total 1)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.1602.1.11.1.3.1.4.301</snmp_oid>
+                    <key>print</key>
+                    <delay>5m</delay>
+                </item>
+                <item>
+                    <uuid>23e151599cb3419bbd011094ecd114e2</uuid>
+                    <name>Scan (Total 1)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.1602.1.11.1.3.1.4.501</snmp_oid>
+                    <key>scan</key>
+                    <delay>5m</delay>
+                </item>
+                <item>
+                    <uuid>4255bd22307840d297e32ed03278f981</uuid>
+                    <name>Black Toner</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.43.11.1.1.8.1.1</snmp_oid>
+                    <key>toner.black</key>
+                    <delay>5m</delay>
+                    <triggers>
+                        <trigger>
+                            <uuid>5c48ae473103481581024e5d9b3197d8</uuid>
+                            <expression>last(/iR-ADV_C3325/toner.black)&lt;=5</expression>
+                            <name>Black toner is low</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>f4dc9c628683415fb8953a4145b0e7cf</uuid>
+                    <name>Cyan Toner</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.43.11.1.1.8.1.2</snmp_oid>
+                    <key>toner.cyan</key>
+                    <delay>5m</delay>
+                    <triggers>
+                        <trigger>
+                            <uuid>663358678442409d922fd88deaa8fa9a</uuid>
+                            <expression>last(/iR-ADV_C3325/toner.cyan)&lt;=5</expression>
+                            <name>Cyan toner is low</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>dd7a016e2d5146d182afc427ea01ec3f</uuid>
+                    <name>Magenta Toner</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.43.11.1.1.8.1.3</snmp_oid>
+                    <key>toner.magenta</key>
+                    <delay>5m</delay>
+                    <triggers>
+                        <trigger>
+                            <uuid>804b0242f3b04da69bb456691ad816b3</uuid>
+                            <expression>last(/iR-ADV_C3325/toner.magenta)&lt;=5</expression>
+                            <name>Magenta toner is low</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>5591bf64fc3647d48f6f67a3db7b93a5</uuid>
+                    <name>Waste Toner</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.43.11.1.1.8.1.5</snmp_oid>
+                    <key>toner.waste</key>
+                    <delay>5m</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <preprocessing>
+                        <step>
+                            <type>STR_REPLACE</type>
+                            <parameters>
+                                <parameter>-2</parameter>
+                                <parameter>OK</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <uuid>11dae1290d144440afdf99bdc4793bf8</uuid>
+                            <expression>last(/iR-ADV_C3325/toner.waste)&lt;&gt;&quot;OK&quot;</expression>
+                            <name>Waste toner issue</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>85317cbb252c403d92d0ff3c4a15994a</uuid>
+                    <name>Yellow Toner</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.43.11.1.1.8.1.4</snmp_oid>
+                    <key>toner.yellow</key>
+                    <delay>5m</delay>
+                    <triggers>
+                        <trigger>
+                            <uuid>6a8461d459c94dbdb9206068b2999a47</uuid>
+                            <expression>last(/iR-ADV_C3325/toner.yellow)&lt;=5</expression>
+                            <name>Yellow toner is low</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>ad1b4fe26c164c5aa30dd03847217f87</uuid>
+                    <name>Total (Black &amp; White/Large)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.1602.1.11.1.3.1.4.112</snmp_oid>
+                    <key>total.blackwhite.large</key>
+                    <delay>5m</delay>
+                </item>
+                <item>
+                    <uuid>4b0508ecae614d78b886db12b2c0ad8e</uuid>
+                    <name>Total (Black &amp; White/Small)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.1602.1.11.1.3.1.4.113</snmp_oid>
+                    <key>total.blackwhite.small</key>
+                    <delay>5m</delay>
+                </item>
+                <item>
+                    <uuid>e1716cb0b6924266af1901460d5e5ead</uuid>
+                    <name>Total (Full Color + Single Color/Large)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.1602.1.11.1.3.1.4.122</snmp_oid>
+                    <key>total.fullcolor.large</key>
+                    <delay>5m</delay>
+                </item>
+                <item>
+                    <uuid>a6712b5741dc42acac87682772f9cd54</uuid>
+                    <name>Total (Full Color + Single Color/Small)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.1602.1.11.1.3.1.4.123</snmp_oid>
+                    <key>total.fullcolor.small</key>
+                    <delay>5m</delay>
+                </item>
+                <item>
+                    <uuid>9fd5eb4c67254eaf8393ea9b2da2d9f7</uuid>
+                    <name>Black Drum Unit</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.43.11.1.1.8.1.6</snmp_oid>
+                    <key>unit.drum.black</key>
+                    <delay>5m</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>1.3.6.1.2.1.43.11.1.1.8.1.6</description>
+                    <preprocessing>
+                        <step>
+                            <type>STR_REPLACE</type>
+                            <parameters>
+                                <parameter>-2</parameter>
+                                <parameter>OK</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <uuid>b589f2db141743959ea4b6e152e02004</uuid>
+                            <expression>last(/iR-ADV_C3325/unit.drum.black)&lt;&gt;&quot;OK&quot;</expression>
+                            <name>Black drum issue</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>d6feb97d297941dd99caf8f2c8cc5b46</uuid>
+                    <name>Cyan Drum Unit</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.43.11.1.1.8.1.7</snmp_oid>
+                    <key>unit.drum.cyan</key>
+                    <delay>5m</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <preprocessing>
+                        <step>
+                            <type>STR_REPLACE</type>
+                            <parameters>
+                                <parameter>-2</parameter>
+                                <parameter>OK</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <uuid>592a6af47318454494474efe9f23db57</uuid>
+                            <expression>last(/iR-ADV_C3325/unit.drum.cyan)&lt;&gt;&quot;OK&quot;</expression>
+                            <name>Cyan drum issue</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>c39c0c757a69497d86b052cfcb3c76ff</uuid>
+                    <name>Magenta Drum Unit</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.43.11.1.1.8.1.8</snmp_oid>
+                    <key>unit.drum.magenta</key>
+                    <delay>5m</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <preprocessing>
+                        <step>
+                            <type>STR_REPLACE</type>
+                            <parameters>
+                                <parameter>-2</parameter>
+                                <parameter>OK</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <uuid>89b5ff88ec1043d0b9d9db06f1dc70b3</uuid>
+                            <expression>last(/iR-ADV_C3325/unit.drum.magenta)&lt;&gt;&quot;OK&quot;</expression>
+                            <name>Magenta drum issue</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>efe6b9c7c90c43dfbaa42c84cb1e85e5</uuid>
+                    <name>Yellow Drum Unit</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.43.11.1.1.8.1.9</snmp_oid>
+                    <key>unit.drum.yellow</key>
+                    <delay>5m</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <preprocessing>
+                        <step>
+                            <type>STR_REPLACE</type>
+                            <parameters>
+                                <parameter>-2</parameter>
+                                <parameter>OK</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <uuid>f0bac261d3c54ef2aeaea3f7b2054cc6</uuid>
+                            <expression>last(/iR-ADV_C3325/unit.drum.yellow)&lt;&gt;&quot;OK&quot;</expression>
+                            <name>Yellow drum issue</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+        </template>
+    </templates>
+</zabbix_export>

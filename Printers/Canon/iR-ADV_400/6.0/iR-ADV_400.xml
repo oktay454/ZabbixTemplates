@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.0</version>
+    <date>2024-01-03T13:50:40Z</date>
+    <groups>
+        <group>
+            <uuid>58afa722676b4fba86702054223316d9</uuid>
+            <name>Templates/Printers</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <uuid>2b390a04c8e0457ab0467ecebe8d9958</uuid>
+            <template>iR-ADV_400</template>
+            <name>Canon iR-ADV 400 by SNMP</name>
+            <groups>
+                <group>
+                    <name>Templates/Printers</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>2f7ca551ae934bcba1eba92c50ad9cd6</uuid>
+                    <name>Print (Total 1)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.1602.1.11.1.3.1.4.301</snmp_oid>
+                    <key>print</key>
+                    <delay>5m</delay>
+                </item>
+                <item>
+                    <uuid>2e9897336ea543a3a25ea2f4f4973ce9</uuid>
+                    <name>Scan (Total 1)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.1602.1.11.1.3.1.4.501</snmp_oid>
+                    <key>scan</key>
+                    <delay>5m</delay>
+                </item>
+                <item>
+                    <uuid>f589d91f394640da9f7e8a59dfb6293c</uuid>
+                    <name>Black Toner</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.43.11.1.1.8.1.1</snmp_oid>
+                    <key>toner.black</key>
+                    <delay>5m</delay>
+                    <triggers>
+                        <trigger>
+                            <uuid>a07fa238bb4444e4b1f439598eb95d32</uuid>
+                            <expression>last(/iR-ADV_400/toner.black)&lt;=5</expression>
+                            <name>Black toner is low</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>92208cb2bb5241b5ad6a0856d26a161d</uuid>
+                    <name>Waste Toner</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.43.11.1.1.8.1.2</snmp_oid>
+                    <key>toner.waste</key>
+                    <delay>5m</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <preprocessing>
+                        <step>
+                            <type>STR_REPLACE</type>
+                            <parameters>
+                                <parameter>-2</parameter>
+                                <parameter>OK</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <uuid>f03ca63c5d59435c838e895c5248cd49</uuid>
+                            <expression>last(/iR-ADV_400/toner.waste)&lt;&gt;&quot;OK&quot;</expression>
+                            <name>Waste toner issue</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>0107120c7f074e9a970b606e7789dbca</uuid>
+                    <name>Total 1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.1602.1.11.1.3.1.4.101</snmp_oid>
+                    <key>total</key>
+                    <delay>5m</delay>
+                </item>
+            </items>
+        </template>
+    </templates>
+</zabbix_export>
